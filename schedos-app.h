@@ -61,4 +61,23 @@ sys_exit(int status)
     loop: goto loop; // Convince GCC that function truly does not return.
 }
 
+/*****************************************************************************
+ * sys_set_priority(priority)
+ *
+ *   Set priority of the process
+ *
+ *****************************************************************************/
+
+static inline void
+sys_set_priority(int priority)
+{
+	// We call a system call by causing an interrupt with the 'int'
+	// instruction.  In weensyos, the type of system call is indicated
+	// by the interrupt number -- here, INT_SYS_YIELD.
+	asm volatile("int %0\n"
+		     : : "i" (INT_SYS_USER1),
+                 "a" (priority)
+		     : "cc", "memory");
+}
+
 #endif

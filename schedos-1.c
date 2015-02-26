@@ -22,6 +22,8 @@ void
 start(void)
 {
 	int i;
+//    if(PRINTCHAR == ('1' | 0x0C00))
+//        sys_set_priority(1);
 
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
@@ -30,6 +32,8 @@ start(void)
 	}
 
 	// Yield forever.
-	while (1)
-		sys_yield();
+	//while (1)
+	//	sys_yield();
+
+    sys_exit(0);
 }

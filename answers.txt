@@ -7,7 +7,7 @@ Collaborators:
 
 Response to Exercise 1:
 
-The name of the scheduling algorithm is:
+The name of the scheduling algorithm is: First Come First Serve
 
 
 (Exercise 2 is a coding exercise)
@@ -15,16 +15,17 @@ The name of the scheduling algorithm is:
 
 Response to Exercise 3:
 
-Average turnaround time for scheduling_algorithm 0:
-Average turnaround time for scheduling_algorithm 1:
+Average turnaround time for scheduling_algorithm 0: 1278.5 ms
+Average turnaround time for scheduling_algorithm 1: 800 ms
 
-Average wait time for scheduling_algorithm 0:
-Average wait time for scheduling_algorithm 1:
+Average wait time for scheduling_algorithm 0: 1.5 ms
+Average wait time for scheduling_algorithm 1: 480 ms
 
 
 Exercise 4:
 
 Did you complete Exercise 4A, Exercise 4B, or both for extra credit?
+Both
 
 
 Exercise 5:
