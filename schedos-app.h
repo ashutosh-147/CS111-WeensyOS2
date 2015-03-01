@@ -80,4 +80,20 @@ sys_set_priority(int priority)
 		     : "cc", "memory");
 }
 
+/*****************************************************************************
+ * sys_lock(void)
+ *
+ *   Lock or unlock the lock
+ *
+ *****************************************************************************/
+
+static inline void
+sys_print(uint16_t c)
+{
+    asm volatile("int %0\n"
+		     : : "i" (INT_SYS_USER2),
+                 "a" (c)
+		     : "cc", "memory");
+}
+
 #endif

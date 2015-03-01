@@ -25,10 +25,13 @@ Average wait time for scheduling_algorithm 1: 480 ms
 Exercise 4:
 
 Did you complete Exercise 4A, Exercise 4B, or both for extra credit?
+
 Both
 
 
 Exercise 5:
+
+Process 4 had the first interrupt since it did not finish outputting its text.
 
 
 (Exercise 6 is a coding exercise)

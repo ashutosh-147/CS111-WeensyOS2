@@ -22,12 +22,13 @@ void
 start(void)
 {
 	int i;
-//    if(PRINTCHAR == ('1' | 0x0C00))
-//        sys_set_priority(1);
+    if(PRINTCHAR == ('1' | 0x0C00))
+        sys_set_priority(3);
 
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
-		*cursorpos++ = PRINTCHAR;
+		//*cursorpos++ = PRINTCHAR;
+        sys_print(PRINTCHAR);
 		sys_yield();
 	}
 
