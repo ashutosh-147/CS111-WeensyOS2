@@ -23,7 +23,13 @@ start(void)
 {
 	int i;
     if(PRINTCHAR == ('1' | 0x0C00))
+        sys_set_priority(1);
+    else if(PRINTCHAR == ('2' | 0x0A00))
+        sys_set_priority(1);
+    else if(PRINTCHAR == ('3' | 0x0900))
         sys_set_priority(3);
+    else if(PRINTCHAR == ('4' | 0x0E00))
+        sys_set_priority(2);
 
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.

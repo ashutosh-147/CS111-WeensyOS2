@@ -49,8 +49,6 @@ process_t *current;
 // The preferred scheduling algorithm.
 int scheduling_algorithm;
 
-uint32_t lock;
-
 
 /*****************************************************************************
  * start
@@ -67,7 +65,7 @@ start(void)
 
 	// Set up hardware (schedos-x86.c)
 	segments_init();
-	interrupt_controller_init(1);
+	interrupt_controller_init(0);
 	console_clear();
 
 	// Initialize process descriptors as empty
@@ -93,7 +91,7 @@ start(void)
 
 		// Mark the process as runnable!
 		proc->p_state = P_RUNNABLE;
-        proc->p_priority = 3;
+        proc->p_priority = 0;
         proc->p_times_run = 0;
 	}
 
@@ -101,15 +99,13 @@ start(void)
 	// console's first character (the upper left).
 	cursorpos = (uint16_t *) 0xB8000;
 
-    // initialize lock to unlocked
-    lock = -1;
-
 	// Initialize the scheduling algorithm.
 	scheduling_algorithm = 0;
 
 	// Switch to the first process.
-    proc_array[1].p_times_run = 1;
-	run(&proc_array[1]);
+    //proc_array[1].p_times_run = 1;
+	//run(&proc_array[1]);
+    schedule();
 
 	// Should never get here!
 	while (1)
@@ -251,6 +247,22 @@ schedule(void)
                 pid = (pid + 1) % NPROCS;
                 if(proc_array[pid].p_state == P_RUNNABLE) {
                     proc_array[pid].p_times_run = 0;
+                }
+            }
+        }
+    }
+    else if (scheduling_algorithm == 4) {
+        int priority ,j;
+        while(1) {
+            for(priority = 0; priority < NPROCS; priority++) {
+                for(j = 0; j < NPROCS; j++) {
+                    if(priority > 0 && j == 0)
+                        pid = current->p_pid;
+                    else
+                        pid = (pid + 1) % NPROCS;
+                    if (proc_array[pid].p_priority == priority
+                        && proc_array[pid].p_state == P_RUNNABLE)
+				        run(&proc_array[pid]);
                 }
             }
         }

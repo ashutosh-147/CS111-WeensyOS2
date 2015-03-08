@@ -26,7 +26,7 @@ Exercise 4:
 
 Did you complete Exercise 4A, Exercise 4B, or both for extra credit?
 
-Both
+I completed both parts for extra credit.
 
 
 Exercise 5:
@@ -42,3 +42,8 @@ Anything else you'd like us to know:
 
 
 Extra credit exercises:
+
+For exercise 7, I implemented a multilevel queue. There are NPROC queues labeled
+0 to NPROC-1. The processes in each queue are determined by the process priority
+levels. Queue 0 is implemented as round robin and the rest are FCFS. Processes on
+higher priority queues will be run before the lower priority ones.
