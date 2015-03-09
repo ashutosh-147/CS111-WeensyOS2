@@ -91,7 +91,7 @@ start(void)
 
 		// Mark the process as runnable!
 		proc->p_state = P_RUNNABLE;
-        proc->p_priority = 0;
+        proc->p_priority = 1;
         proc->p_times_run = 0;
 	}
 
@@ -236,7 +236,7 @@ schedule(void)
         while(1) {
             for(i = 0; i < NPROCS; i++) {
                 pid = (pid + 1) % NPROCS;
-                if(proc_array[pid].p_times_run < pid
+                if(proc_array[pid].p_times_run < proc_array[pid].p_priority
                    && proc_array[pid].p_state == P_RUNNABLE) {
                     proc_array[pid].p_times_run++;
                     run(&proc_array[pid]);
